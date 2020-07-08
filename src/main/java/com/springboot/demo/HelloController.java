@@ -71,7 +71,7 @@ public class HelloController {
 
         return mav;
     }
- 
+
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @Transactional(readOnly = false)
     public ModelAndView remove(@RequestParam long id, ModelAndView mav){
