@@ -4,14 +4,9 @@ import com.springboot.demo.repositories.MyDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.Optional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HelloController {
@@ -64,6 +59,23 @@ public class HelloController {
     @Transactional(readOnly = false)
     public ModelAndView update(@ModelAttribute MyData myData, ModelAndView mav) {
         repository.saveAndFlush(myData);
+        return new ModelAndView("redirect:/");
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public ModelAndView delete(@PathVariable int id, ModelAndView mav) {
+        mav.setViewName("delete");
+        mav.addObject("title", "delete mydata");
+        MyData data = repository.findById((long) id);
+        mav.addObject("formModel", data);
+
+        return mav;
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @Transactional(readOnly = false)
+    public ModelAndView remove(@RequestParam long id, ModelAndView mav){
+        repository.deleteById(id);
         return new ModelAndView("redirect:/");
     }
     /*@RequestMapping(value = "/", method = RequestMethod.POST)
