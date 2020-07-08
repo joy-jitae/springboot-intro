@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>edit page</title>
+
+    <style>
+        h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            color: gray;
+        }
+        body {
+            font-size: 13pt;
+            color: gray;
+            margin: 5px 25px;
+        }
+        tr {
+            margin:5px;
+        }
+        th{
+            padding: 5px;
+            color: white;
+            background: gray;
+        }
+        td {
+            padding: 5px;
+            color: black;
+            background:#e0e0ff;
+        }
+    </style>
+</head>
+<body>
+<h1 th:text="${title}">Edit Page</h1>
+<table>
+    <form method="post" action="/delete" th:object="${formModel}">
+        <input type="hidden" name="id" th:value="*{id}" />
+        <tr>
+            <td>
+                <p th:text="| 이름 :    *{name} |"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p th:text="| 나이 :    *{age} |"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p th:text="| 메일 :    *{mail} |"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p th:text="| 메모 :    *{memo} |"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="delete"/>
+            </td>
+        </tr>
+    </form>
+</table>
+</body>
+</html>
