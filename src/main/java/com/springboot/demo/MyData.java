@@ -1,8 +1,12 @@
 package com.springboot.demo;
 
+import com.sun.istack.NotNull;
 import com.sun.javafx.beans.IDProperty;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 
 @Entity
 @Table(name="mydata")
@@ -11,15 +15,19 @@ public class MyData {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
+    @NotNull
     private long id;
 
     @Column(length = 50, nullable = false)
+    @NotEmpty
     private String name;
 
     @Column(length = 200, nullable = true)
+    @Email
     private String mail;
 
     @Column(nullable = true)
+    @Max(200)
     private Integer age;
 
     @Column(nullable = true)
