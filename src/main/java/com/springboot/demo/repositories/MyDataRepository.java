@@ -12,7 +12,7 @@ public interface MyDataRepository extends JpaRepository<MyData, Long> {
 
     public MyData findById(long name);
 
-    public List<MyData> findByNameLike(String name);
+    public List<MyData> findByNameLike(String name);            //JPA Name 조건
 
     public List<MyData> findByIdIsNotNullOOrderByIdDesc();
 
