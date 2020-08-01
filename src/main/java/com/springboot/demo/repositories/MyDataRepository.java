@@ -13,10 +13,10 @@ public interface MyDataRepository extends JpaRepository<MyData, Long> {
     public MyData findById(long name);
 
     public List<MyData> findByNameLike(String name);            //JPA Name 조건
-
-    public List<MyData> findByIdIsNotNullOOrderByIdDesc();
-
-    public List<MyData> findByAgeGreaterThan(Integer age);
-
-    public List<MyData> findByAgeBetween(Integer age1, Integer age2);
+//
+//    public List<MyData> findByIdIsNotNullOOrderByIdDesc();
+//
+//    public List<MyData> findByAgeGreaterThan(Integer age);
+//
+//    public List<MyData> findByAgeBetween(Integer age1, Integer age2);
 }
